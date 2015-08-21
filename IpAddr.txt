@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+
+int main(){
+
+FILE *fp;
+char returnData[64];
+fp = popen("/sbin/ifconfig eth0", "r");
+char *tok;
+static int z=1;
+char delim[]=":";
+
+while (fgets(returnData, 64, fp) != NULL){
+  if(z == 2){
+    token = strtok (returnData, delim);
+    break;
+  }
+  z++;
+}
+
+do{
+	tok=strtok(NULL,"Bcast");
+	printf("Internet Address : %s\n"),tok);
+	break;
+}while(tok!=NULL);
+
+pclose(fp);
+return 0;
+
+}
